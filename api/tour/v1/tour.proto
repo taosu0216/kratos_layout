@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package tour.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "./;v1";
+
+service Tour{
+  rpc SayHello (HiRequest) returns (HiReply){
+    option (google.api.http) = {
+      get: "/tour/test"
+    };
+  }
+  rpc Ai(AiRequest) returns (AiReply){
+    option (google.api.http) = {
+      get: "/tour/ai"
+    };
+  }
+}
+message HiRequest{
+}
+
+message HiReply{
+  string message = 1;
+}
+
+message AiRequest{
+  string msg = 1;
+}
+message AiReply{
+  string msg = 1;
+}
